@@ -5,13 +5,13 @@ services:
     image: postgis/postgis:13-3.1
     container_name: postgres-db
     environment:
-      POSTGRES_DB: mydb
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: postgis
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
     ports:
       - "5432:5432"
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - postgres-data:/mnt/postgresql/data
 
   # GeoServer
   geoserver:
@@ -20,8 +20,8 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - geoserver-data:/opt/geoserver/data_dir
-#rewrite incase you want to store the data in an attached EBS volume
+      - geoserver-data:/mnt/geoserver/data_dir
+
 volumes:
   postgres-data:
   geoserver-data:
